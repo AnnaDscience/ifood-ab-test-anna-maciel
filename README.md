@@ -53,3 +53,14 @@ A estimativa financeira mostrou que, mesmo considerando o custo dos incentivos p
 A segmentação de usuários se mostrou fundamental para melhorar a eficiência das campanhas, permitindo direcionar incentivos apenas para públicos com maior probabilidade de conversão.
 
 Por fim, a utilização contínua de experimentação (A/B tests) combinada com análise financeira e segmentação pode aumentar a eficiência das campanhas promocionais e sustentar o crescimento da plataforma.
+
+---
+
+## Tecnologias Utilizadas
+
+- **Python** — análise de dados e cálculos estatísticos  
+- **Pandas** — manipulação e transformação de dados  
+- **Databricks** — ambiente de desenvolvimento e execução da análise  
+- **Matplotlib / Visualizações** — análise exploratória e entendimento dos dados  
+- **A/B Testing** — metodologia para avaliação de impacto de experimentos  
+- **Análise de Negócio** — avaliação de viabilidade financeira e definição de estratégias
