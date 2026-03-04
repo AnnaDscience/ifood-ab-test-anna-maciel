@@ -41,3 +41,15 @@ A análise foi conduzida em três etapas principais:
 - Definição de segmentos de usuários com base em comportamento
 - Propostas de ações específicas por segmento
 - Recomendações estratégicas para otimização de campanhas promocionais
+
+- ---
+
+## Principais Insights
+
+A análise do experimento A/B indicou que campanhas de cupons possuem potencial para aumentar a conversão de usuários e gerar receita incremental para a plataforma.
+
+A estimativa financeira mostrou que, mesmo considerando o custo dos incentivos promocionais, a campanha pode apresentar retorno positivo quando existe aumento significativo no volume de pedidos.
+
+A segmentação de usuários se mostrou fundamental para melhorar a eficiência das campanhas, permitindo direcionar incentivos apenas para públicos com maior probabilidade de conversão.
+
+Por fim, a utilização contínua de experimentação (A/B tests) combinada com análise financeira e segmentação pode aumentar a eficiência das campanhas promocionais e sustentar o crescimento da plataforma.
