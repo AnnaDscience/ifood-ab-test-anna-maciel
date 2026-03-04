@@ -13,8 +13,9 @@ A análise foi desenvolvida utilizando Python em ambiente Databricks, com foco e
 ## Estrutura do Projeto
 
 O projeto está organizado da seguinte forma:
+
 ifood-ab-test-anna-maciel/
-│
+'''│
 ├── dados/
 ├── 01_exploracao_e_preparacao
-└── README.md
+└──''' README.md
