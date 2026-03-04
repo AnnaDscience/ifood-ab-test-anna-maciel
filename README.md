@@ -21,3 +21,23 @@ ifood-ab-test-anna-maciel/
 01_exploracao_e_preparacao
 
  README.md
+
+---
+
+## Etapas da Análise
+
+A análise foi conduzida em três etapas principais:
+
+### 1. Análise do Experimento A/B
+- Avaliação da distribuição de usuários entre grupo controle e grupo teste
+- Análise de comportamento e potencial impacto da campanha de cupons
+
+### 2. Análise de Viabilidade Financeira
+- Estimativa de pedidos gerados pela campanha
+- Cálculo de receita total e receita da plataforma
+- Estimativa de custo da campanha e ROI
+
+### 3. Segmentação de Usuários e Estratégia de Negócio
+- Definição de segmentos de usuários com base em comportamento
+- Propostas de ações específicas por segmento
+- Recomendações estratégicas para otimização de campanhas promocionais
