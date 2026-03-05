@@ -1,22 +1,47 @@
-# 🍔 iFood – Case de Dados (Teste A/B de Cupons)
+# 🍔 iFood – Case de Dados (Análise de Experimento A/B de Cupons)
 
-Este projeto apresenta uma análise exploratória e uma estimativa de viabilidade financeira para um experimento **A/B de cupons**, com o objetivo de avaliar se a campanha gera impacto positivo para o negócio.
+Este projeto apresenta uma **análise exploratória e avaliação de viabilidade financeira** de uma campanha de cupons utilizando **experimento A/B**.
 
-A análise foi desenvolvida utilizando **Python, Pandas e Matplotlib**, seguindo uma estrutura típica de análise de dados aplicada a produtos digitais.
+O objetivo é verificar se oferecer cupons para um grupo de usuários gera **impacto positivo em conversão e receita** para a plataforma.
+
+A análise foi desenvolvida utilizando **Python e Databricks**, simulando um cenário real de análise de produto em empresas de tecnologia.
 
 ---
 
-# 📂 Estrutura do projeto
+# 📊 Objetivo do Experimento
+
+O experimento separa os usuários em dois grupos:
+
+**Grupo Controle**
+
+* Não recebe cupom
+* Serve como baseline para comparação
+
+**Grupo Teste (Target)**
+
+* Recebe cupom promocional
+* Objetivo é medir aumento de conversão
+
+A análise busca responder:
+
+* O grupo teste possui comportamento diferente do controle?
+* A campanha de cupons gera impacto positivo?
+* A campanha é financeiramente viável?
+
+---
+
+# 📂 Estrutura do Projeto
 
 ```
-.
+ifood-ab-test-anna-maciel/
+│
+├── notebooks/
+│   └── 01_ifood_ab_test_analysis.ipynb
+│
 ├── data/
 │   ├── consumer.csv.gz
 │   ├── restaurant.csv.gz
 │   └── ab_test_ref.csv
-│
-├── notebooks/
-│   └── 01_ifood_ab_test_analysis.ipynb
 │
 ├── relatorio/
 │   └── relatorio_executivo_ifood_ab_test_layout.pdf
@@ -24,68 +49,56 @@ A análise foi desenvolvida utilizando **Python, Pandas e Matplotlib**, seguindo
 └── README.md
 ```
 
-**Descrição dos arquivos**
+### Descrição dos arquivos
 
-| Arquivo                                      | Descrição                                         |
-| -------------------------------------------- | ------------------------------------------------- |
-| consumer.csv.gz                              | Cadastro de usuários da plataforma                |
-| restaurant.csv.gz                            | Cadastro de restaurantes                          |
-| ab_test_ref.csv                              | Base de usuários participantes do experimento A/B |
-| 01_ifood_ab_test_analysis.ipynb              | Notebook com análise completa                     |
-| relatorio_executivo_ifood_ab_test_layout.pdf | Relatório executivo gerado a partir da análise    |
+| Arquivo                                      | Descrição                                                |
+| -------------------------------------------- | -------------------------------------------------------- |
+| consumer.csv.gz                              | Cadastro de usuários da plataforma                       |
+| restaurant.csv.gz                            | Cadastro de restaurantes                                 |
+| ab_test_ref.csv                              | Base que identifica usuários do grupo controle e teste   |
+| 01_ifood_ab_test_analysis.ipynb              | Notebook com análise exploratória e simulação financeira |
+| relatorio_executivo_ifood_ab_test_layout.pdf | Relatório executivo com resultados e recomendações       |
 
 ---
 
-# ⚙️ Tecnologias utilizadas
+# ⚙️ Tecnologias Utilizadas
 
-* Python 3
+* Python
 * Pandas
 * Matplotlib
+* Databricks
 * Jupyter Notebook
 
 ---
 
 # ▶️ Como executar o projeto
 
-## 1️⃣ Clonar o repositório
+## 🔹 Opção 1 — Executar no Databricks (Recomendado)
 
-```bash
-git clone https://github.com/AnnaDscience/ifood-ab-test-anna-maciel.git
-cd ifood-ab-test-anna-maciel
-```
+A análise foi originalmente desenvolvida no **Databricks**.
 
----
+### 1️⃣ Criar um workspace
 
-## 2️⃣ Criar ambiente virtual (opcional)
+https://www.databricks.com
 
-```bash
-python -m venv venv
-source venv/bin/activate
-```
+### 2️⃣ Criar um Cluster
 
-Windows:
+Configuração sugerida:
 
-```bash
-venv\Scripts\activate
-```
+* Runtime: Databricks Runtime 13+
+* Language: Python
 
 ---
 
-## 3️⃣ Instalar dependências
+### 3️⃣ Importar o notebook
 
-```bash
-pip install pandas matplotlib jupyter
+Menu:
+
+```
+Workspace → Import
 ```
 
----
-
-## 4️⃣ Iniciar o Jupyter Notebook
-
-```bash
-jupyter notebook
-```
-
-Abra o notebook:
+Importar o arquivo:
 
 ```
 01_ifood_ab_test_analysis.ipynb
@@ -93,92 +106,182 @@ Abra o notebook:
 
 ---
 
-# 📊 Etapas da análise
+### 4️⃣ Fazer upload dos datasets
 
-O notebook está organizado nas seguintes etapas:
+Menu:
 
-### 1️⃣ Carregamento dos dados
+```
+Data → Add Data → Upload File
+```
 
-* leitura dos arquivos `.csv.gz`
-* validação inicial das bases
+Upload dos arquivos:
 
-### 2️⃣ Preparação dos dados
-
-* junção das tabelas
-* padronização de variáveis
-* criação de variáveis auxiliares
-
-### 3️⃣ Análise exploratória
-
-* distribuição de usuários por grupo
-* proporção de usuários ativos
-* distribuição de mês de criação
-
-### 4️⃣ Visualizações
-
-* gráficos de distribuição
-* comparação entre grupos controle e teste
-
-### 5️⃣ Análise financeira (estimativa)
-
-Como a base de pedidos (`orders`) não está disponível, foi construída uma **simulação baseada em premissas** para estimar:
-
-* receita potencial
-* custo da campanha
-* ROI da iniciativa
-
-### 6️⃣ Recomendações de experimento
-
-* proposta de novos testes A/B
-* métricas de avaliação
-* guardrails de produto
+```
+consumer.csv.gz
+restaurant.csv.gz
+ab_test_ref.csv
+```
 
 ---
 
-# 📈 Premissas utilizadas
+### 5️⃣ Ajustar caminho dos arquivos
+
+Exemplo:
+
+```python
+consumer = pd.read_csv("/dbfs/FileStore/consumer.csv.gz")
+restaurant = pd.read_csv("/dbfs/FileStore/restaurant.csv.gz")
+ab_test = pd.read_csv("/dbfs/FileStore/ab_test_ref.csv")
+```
+
+---
+
+### 6️⃣ Executar o notebook
+
+Selecionar:
+
+```
+Run All
+```
+
+---
+
+# 💻 Execução alternativa (local)
+
+Caso prefira rodar localmente.
+
+### 1️⃣ Clonar repositório
+
+```bash
+git clone https://github.com/AnnaDscience/ifood-ab-test-anna-maciel.git
+cd ifood-ab-test-anna-maciel
+```
+
+### 2️⃣ Instalar dependências
+
+```bash
+pip install pandas matplotlib jupyter
+```
+
+### 3️⃣ Rodar notebook
+
+```bash
+jupyter notebook
+```
+
+Abrir:
+
+```
+01_ifood_ab_test_analysis.ipynb
+```
+
+---
+
+# 📈 Etapas da Análise
+
+A análise foi dividida em quatro etapas principais.
+
+### 1️⃣ Preparação dos dados
+
+* Leitura dos datasets
+* Validação das colunas
+* Criação de variáveis auxiliares
+* Identificação de grupos do experimento
+
+---
+
+### 2️⃣ Análise exploratória
+
+Foram avaliados:
+
+* distribuição de usuários por grupo
+* proporção de usuários ativos
+* distribuição de data de criação das contas
+
+Essa etapa garante que os grupos são **comparáveis**.
+
+---
+
+### 3️⃣ Visualizações
+
+Foram criados gráficos para avaliar:
+
+* equilíbrio do experimento
+* evolução temporal dos usuários
+* diferenças entre grupos
+
+---
+
+### 4️⃣ Simulação de impacto financeiro
+
+Como o dataset não possui dados de pedidos (`orders`), foi construída uma **simulação baseada em premissas de negócio**.
+
+Premissas utilizadas:
 
 | Premissa                   | Valor |
 | -------------------------- | ----- |
-| Ticket médio do pedido     | R$ 60 |
+| Ticket médio               | R$ 60 |
 | Comissão da plataforma     | 20%   |
 | Valor médio do cupom       | R$ 10 |
 | Taxa de conversão estimada | 5%    |
 
-Essas premissas foram utilizadas apenas para **estimativa de viabilidade financeira**.
+---
+
+# 📊 Resultados estimados
+
+Baseado nas premissas:
+
+* Usuários impactados: **445.925**
+* Pedidos estimados: **22.296**
+* Receita total gerada: **R$ 1.337.775**
+* Receita iFood: **R$ 267.555**
+* Custo da campanha: **R$ 222.962**
+
+Resultado estimado:
+
+**ROI aproximado: 20%**
 
 ---
 
-# ⚠️ Limitação da análise
+# 🧠 Recomendações Estratégicas
 
-O dataset fornecido **não contém dados de pedidos (`orders`)**.
+Com base na análise, são recomendadas as seguintes ações:
 
-Portanto, não foi possível calcular diretamente:
+### 1️⃣ Escalar campanhas vencedoras
 
-* conversão real
-* ticket médio real
-* receita incremental
+Expandir campanhas que apresentarem ROI positivo.
 
-Em um cenário real, a análise ideal incluiria:
+### 2️⃣ Segmentar usuários
 
-* comparação de conversão entre grupos
-* teste estatístico de significância
-* cálculo de receita incremental
+Aplicar diferentes estratégias para:
+
+* novos usuários
+* usuários recorrentes
+* usuários inativos
+
+### 3️⃣ Otimizar custo de cupons
+
+Testar variações como:
+
+* cupons com pedido mínimo
+* desconto percentual com teto
+* cupons exclusivos para segmentos específicos
 
 ---
 
-# 📄 Relatório executivo
+# 📄 Relatório Executivo
 
-O relatório final pode ser encontrado em:
+O relatório executivo completo pode ser encontrado em:
 
 ```
 relatorio/relatorio_executivo_ifood_ab_test_layout.pdf
 ```
 
-Ele resume:
+O relatório apresenta:
 
 * contexto do experimento
 * análise exploratória
-* estimativa financeira
+* simulação financeira
 * recomendações estratégicas
 
 ---
@@ -189,7 +292,8 @@ Ele resume:
 
 Data Analyst | BI | Product Analytics
 
-LinkedIn:
+LinkedIn
 https://www.linkedin.com/in/anna-cláudia-maciel-365b8813a
 
----
+GitHub
+https://github.com/AnnaDscience
