@@ -1,66 +1,195 @@
-# iFood Data Analysis Case
+# 🍔 iFood – Case de Dados (Teste A/B de Cupons)
 
-## Objetivo
+Este projeto apresenta uma análise exploratória e uma estimativa de viabilidade financeira para um experimento **A/B de cupons**, com o objetivo de avaliar se a campanha gera impacto positivo para o negócio.
 
-Este projeto apresenta a análise de um experimento A/B relacionado a uma campanha de cupons na plataforma do iFood.
-
-O objetivo do estudo é avaliar o impacto da campanha, analisar sua viabilidade financeira e propor estratégias de segmentação de usuários para otimizar campanhas promocionais.
-
-A análise foi desenvolvida utilizando Python em ambiente Databricks, com foco em experimentação, análise de dados e geração de insights para tomada de decisão de negócio.
+A análise foi desenvolvida utilizando **Python, Pandas e Matplotlib**, seguindo uma estrutura típica de análise de dados aplicada a produtos digitais.
 
 ---
 
-## Estrutura do Projeto
+# 📂 Estrutura do projeto
 
-O projeto está organizado da seguinte forma:
+```
+.
+├── data/
+│   ├── consumer.csv.gz
+│   ├── restaurant.csv.gz
+│   └── ab_test_ref.csv
+│
+├── notebooks/
+│   └── 01_ifood_ab_test_analysis.ipynb
+│
+├── relatorio/
+│   └── relatorio_executivo_ifood_ab_test_layout.pdf
+│
+└── README.md
+```
 
-ifood-ab-test-anna-maciel/
+**Descrição dos arquivos**
 
- dados/
- 
-01_exploracao_e_preparacao
-
- README.md
-
----
-
-## Etapas da Análise
-
-A análise foi conduzida em três etapas principais:
-
-### 1. Análise do Experimento A/B
-- Avaliação da distribuição de usuários entre grupo controle e grupo teste
-- Análise de comportamento e potencial impacto da campanha de cupons
-
-### 2. Análise de Viabilidade Financeira
-- Estimativa de pedidos gerados pela campanha
-- Cálculo de receita total e receita da plataforma
-- Estimativa de custo da campanha e ROI
-
-### 3. Segmentação de Usuários e Estratégia de Negócio
-- Definição de segmentos de usuários com base em comportamento
-- Propostas de ações específicas por segmento
-- Recomendações estratégicas para otimização de campanhas promocionais
-
-- ---
-
-## Principais Insights
-
-A análise do experimento A/B indicou que campanhas de cupons possuem potencial para aumentar a conversão de usuários e gerar receita incremental para a plataforma.
-
-A estimativa financeira mostrou que, mesmo considerando o custo dos incentivos promocionais, a campanha pode apresentar retorno positivo quando existe aumento significativo no volume de pedidos.
-
-A segmentação de usuários se mostrou fundamental para melhorar a eficiência das campanhas, permitindo direcionar incentivos apenas para públicos com maior probabilidade de conversão.
-
-Por fim, a utilização contínua de experimentação (A/B tests) combinada com análise financeira e segmentação pode aumentar a eficiência das campanhas promocionais e sustentar o crescimento da plataforma.
+| Arquivo                                      | Descrição                                         |
+| -------------------------------------------- | ------------------------------------------------- |
+| consumer.csv.gz                              | Cadastro de usuários da plataforma                |
+| restaurant.csv.gz                            | Cadastro de restaurantes                          |
+| ab_test_ref.csv                              | Base de usuários participantes do experimento A/B |
+| 01_ifood_ab_test_analysis.ipynb              | Notebook com análise completa                     |
+| relatorio_executivo_ifood_ab_test_layout.pdf | Relatório executivo gerado a partir da análise    |
 
 ---
 
-## Tecnologias Utilizadas
+# ⚙️ Tecnologias utilizadas
 
-- **Python** — análise de dados e cálculos estatísticos  
-- **Pandas** — manipulação e transformação de dados  
-- **Databricks** — ambiente de desenvolvimento e execução da análise  
-- **Matplotlib / Visualizações** — análise exploratória e entendimento dos dados  
-- **A/B Testing** — metodologia para avaliação de impacto de experimentos  
-- **Análise de Negócio** — avaliação de viabilidade financeira e definição de estratégias
+* Python 3
+* Pandas
+* Matplotlib
+* Jupyter Notebook
+
+---
+
+# ▶️ Como executar o projeto
+
+## 1️⃣ Clonar o repositório
+
+```bash
+git clone https://github.com/AnnaDscience/ifood-ab-test-anna-maciel.git
+cd ifood-ab-test-anna-maciel
+```
+
+---
+
+## 2️⃣ Criar ambiente virtual (opcional)
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+---
+
+## 3️⃣ Instalar dependências
+
+```bash
+pip install pandas matplotlib jupyter
+```
+
+---
+
+## 4️⃣ Iniciar o Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+Abra o notebook:
+
+```
+01_ifood_ab_test_analysis.ipynb
+```
+
+---
+
+# 📊 Etapas da análise
+
+O notebook está organizado nas seguintes etapas:
+
+### 1️⃣ Carregamento dos dados
+
+* leitura dos arquivos `.csv.gz`
+* validação inicial das bases
+
+### 2️⃣ Preparação dos dados
+
+* junção das tabelas
+* padronização de variáveis
+* criação de variáveis auxiliares
+
+### 3️⃣ Análise exploratória
+
+* distribuição de usuários por grupo
+* proporção de usuários ativos
+* distribuição de mês de criação
+
+### 4️⃣ Visualizações
+
+* gráficos de distribuição
+* comparação entre grupos controle e teste
+
+### 5️⃣ Análise financeira (estimativa)
+
+Como a base de pedidos (`orders`) não está disponível, foi construída uma **simulação baseada em premissas** para estimar:
+
+* receita potencial
+* custo da campanha
+* ROI da iniciativa
+
+### 6️⃣ Recomendações de experimento
+
+* proposta de novos testes A/B
+* métricas de avaliação
+* guardrails de produto
+
+---
+
+# 📈 Premissas utilizadas
+
+| Premissa                   | Valor |
+| -------------------------- | ----- |
+| Ticket médio do pedido     | R$ 60 |
+| Comissão da plataforma     | 20%   |
+| Valor médio do cupom       | R$ 10 |
+| Taxa de conversão estimada | 5%    |
+
+Essas premissas foram utilizadas apenas para **estimativa de viabilidade financeira**.
+
+---
+
+# ⚠️ Limitação da análise
+
+O dataset fornecido **não contém dados de pedidos (`orders`)**.
+
+Portanto, não foi possível calcular diretamente:
+
+* conversão real
+* ticket médio real
+* receita incremental
+
+Em um cenário real, a análise ideal incluiria:
+
+* comparação de conversão entre grupos
+* teste estatístico de significância
+* cálculo de receita incremental
+
+---
+
+# 📄 Relatório executivo
+
+O relatório final pode ser encontrado em:
+
+```
+relatorio/relatorio_executivo_ifood_ab_test_layout.pdf
+```
+
+Ele resume:
+
+* contexto do experimento
+* análise exploratória
+* estimativa financeira
+* recomendações estratégicas
+
+---
+
+# 👩‍💻 Autora
+
+**Anna Cláudia Maciel**
+
+Data Analyst | BI | Product Analytics
+
+LinkedIn:
+https://www.linkedin.com/in/anna-cláudia-maciel-365b8813a
+
+---
