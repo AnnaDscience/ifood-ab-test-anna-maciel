@@ -67,7 +67,7 @@ ifood-ab-test-anna-maciel/
 * Pandas
 * Matplotlib
 * Databricks
-* Jupyter Notebook
+
 
 ---
 
